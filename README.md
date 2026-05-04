@@ -68,3 +68,15 @@ Example:
 ```bash
 sudo ./build/PacketInspectionEngine wlp2s0f0
 ```
+## Project Directory Structure
+
+```text
+cpp_packet_inspection_engine/
+|
+├── CMakeLists.txt
+├── includes
+│   └── PacketCapture.h
+├── README.md
+└── src
+    └── main.cpp
+```
