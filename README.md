@@ -38,10 +38,33 @@ cmake -S . -B build -G Ninja
 cmake --build build
 ```
 
-### 3. Run the program
+### 3. Find your network interface
 
-Packet capture usually requires elevated permissions, so run the executable with `sudo`:
+Before running the program, find the name of the network interface you want to capture packets from:
 
 ```bash
-sudo ./build/PacketInspectionEngine
+ip link
+```
+
+Example interface names may include:
+
+```text
+wlp2s0f0
+wlan0
+eth0
+enp0s3
+```
+
+### 4. Run the program
+
+Packet capture usually requires elevated permissions, so run the executable with `sudo` and provide the interface name as an argument:
+
+```bash
+sudo ./build/PacketInspectionEngine <interface-name>
+```
+
+Example:
+
+```bash
+sudo ./build/PacketInspectionEngine wlp2s0f0
 ```
