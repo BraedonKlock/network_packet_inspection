@@ -72,7 +72,7 @@ sudo ./build/PacketInspectionEngine wlp2s0f0
 
 ```text
 cpp_packet_inspection_engine/
-|
+│
 ├── CMakeLists.txt
 ├── includes
 │   └── PacketCapture.h
