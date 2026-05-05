@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(PacketInspectionEngine LANGUAGES CXX)
+project(NetworkPacketInspection LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,14 +12,14 @@ else()
     	add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-add_executable(PacketInspectionEngine
+add_executable(NetworkPacketInspection
     	src/main.cpp
 )
 
-target_include_directories(PacketInspectionEngine PRIVATE
+target_include_directories(NetworkPacketInspection PRIVATE
     	${CMAKE_CURRENT_SOURCE_DIR}/includes
 )
 
-target_link_libraries(PacketInspectionEngine PRIVATE
+target_link_libraries(NetworkPacketInspection PRIVATE
     	pcap
 )
