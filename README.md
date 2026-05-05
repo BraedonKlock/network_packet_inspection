@@ -78,9 +78,19 @@ network_packet_inspection/
 │   ├── capture
 │   │   └── PacketCapture.h
 │   ├── packets
-│   │   └── RawPacket.h
+│   │   ├── IcmpPacket.h
+│   │   ├── Packet.h
+│   │   ├── PacketType.h
+│   │   ├── RawPacket.h
+│   │   ├── TcpPacket.h
+│   │   └── UdpPacket.h
 │   ├── parsers
+│   │   ├── IcmpParser.h
+│   │   ├── Parser.h
+│   │   ├── TcpParser.h
+│   │   └── UdpParser.h
 │   ├── processing
+│   │   └── PacketProcessingPool.h
 │   ├── queue
 │   │   └── PacketQueue.h
 │   └── services
