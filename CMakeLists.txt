@@ -14,6 +14,8 @@ endif()
 
 add_executable(NetworkPacketInspection
     	src/main.cpp
+	src/PacketInspectionService.cpp
+	src/PacketCapture.cpp
 )
 
 target_include_directories(NetworkPacketInspection PRIVATE

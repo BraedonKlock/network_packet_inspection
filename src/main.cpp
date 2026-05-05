@@ -1,25 +1,22 @@
-#include "PacketCapture.h"
+#include "PacketInspectionService.h"
+
+#include <iostream>
+#include <string>
 
 int main(int argc, char* argv[])
 {
     	if (argc != 2)
     	{
-        	std::cerr << "Usage: sudo ./build/PacketInspectionEngine <interface>" << std::endl;
-        	std::cerr << "Example: sudo ./build/PacketInspectionEngine wlp2s0f0" << std::endl;
+        	std::cerr << "Usage: sudo ./build/NetworkPacketInspection <interface>" << std::endl;
+        	std::cerr << "Example: sudo ./build/NetworkPacketInspection wlp2s0f0" << std::endl;
         	return 1;
     	}
 
     	std::string interfaceName = argv[1];
-	PacketCapture capture(interfaceName);
+	
+	PacketInspectionService service(interfaceName);
 
-	if (!capture.open())
-	{
-		std::cerr << "Failed to open capture interface." << std::endl;
-		return 1;
-	}
-
-	std::cout << "Starting packet capture.." << std::endl;
-	capture.start();
+	if (!service.run()) return 1;
 
 	return 0;
 }
