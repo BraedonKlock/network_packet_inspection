@@ -1,6 +1,6 @@
-# cpp_packet_inspection_engine
+# network_packet_inspection
 
-Linux-based C++ packet inspection engine that parses TCP/IP traffic and detects suspicious network behavior.
+Linux-based C++ network packet inspection that parses TCP/IP traffic and detects suspicious network behavior.
 
 ## Requirements
 
@@ -60,18 +60,18 @@ enp0s3
 Packet capture usually requires elevated permissions, so run the executable with `sudo` and provide the interface name as an argument:
 
 ```bash
-sudo ./build/PacketInspectionEngine <interface-name>
+sudo ./build/NetworkPacketInspection <interface-name>
 ```
 
 Example:
 
 ```bash
-sudo ./build/PacketInspectionEngine wlp2s0f0
+sudo ./build/NetworkPacketInspection wlp2s0f0
 ```
 ## Project Directory Structure
 
 ```text
-cpp_packet_inspection_engine/
+network_packet_inspection/
 │
 ├── CMakeLists.txt
 ├── includes
