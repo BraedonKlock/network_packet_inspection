@@ -114,4 +114,14 @@ PacketCapture (producer)
                            ↓
                      PacketQueue
                            ↓
-              (future) Worker Threads (consumers)
+   (FUTURE)    Worker Threads (consumers)
+                           ↓
+                pop RawPacket from queue
+                           ↓
+            classify packet type (TCP/UDP/ICMP)
+                           ↓
+                 select appropriate parser
+                           ↓
+          TcpPacketParser / UdpPacketParser / IcmpPacketParser
+                           ↓
+     create TcpPacket / UdpPacket / IcmpPacket object
