@@ -86,3 +86,32 @@ network_packet_inspection/
     ├── PacketCapture.cpp
     └── PacketInspectionService.cpp
 ```
+
+## How It Works
+
+The program captures live network traffic from a specified interface and processes each packet through a structured pipeline.
+
+### Flow
+
+1. The program starts and takes a network interface as input  
+2. A `PacketInspectionService` object is created to manage the system  
+3. Packet capture begins using libpcap  
+4. Each captured packet triggers a callback function (`packetHandler`)  
+5. The raw packet data is copied into a `RawPacket` object  
+6. The packet is pushed into a thread-safe queue (`PacketQueue`) for processing  
+
+### Architecture
+
+```text
+PacketInspectionService
+        │
+        ├── owns → PacketCapture
+        ├── owns → PacketQueue
+        │
+PacketCapture (producer)
+        │
+        └── pushes RawPacket → PacketQueue
+                           ↓
+                     PacketQueue
+                           ↓
+              (future) Worker Threads (consumers)
