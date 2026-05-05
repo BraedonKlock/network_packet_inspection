@@ -13,6 +13,7 @@ class PacketQueue
 		std::queue<T> queue;
     		std::mutex mutex;
     		std::condition_variable cv;
+		bool stopped = false;
 
 	public:
     		void push(T packet)
@@ -25,19 +26,34 @@ class PacketQueue
 
         		cv.notify_one();
     		}
+		
+		bool pop(T& packet)
+		{
+    			std::unique_lock<std::mutex> lock(mutex);
 
-    		T pop()
-    		{
-        		std::unique_lock<std::mutex> lock(mutex);
+    			cv.wait(lock, [this] {
+        			return stopped || !queue.empty();
+    			});
 
-        		cv.wait(lock, [this] {
-            			return !queue.empty();
-        		});
+    			if (stopped && queue.empty())
+    			{
+        			return false;
+    			}
 
-        		T packet = queue.front();
-        		queue.pop();
+    			packet = std::move(queue.front());
+    			queue.pop();
 
-        		return packet;
+    			return true;
+		}
+
+		void stop() 
+		{
+        		{
+            			std::lock_guard<std::mutex> lock(mutex);
+            			stopped = true;
+        		}
+
+        		cv.notify_all();
     		}
 };
 

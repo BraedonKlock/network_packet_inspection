@@ -35,3 +35,19 @@ void PacketCapture::start()
 
 	pcap_loop(handle, -1, packetHandler, reinterpret_cast<u_char*>(&packetQueue));
 }
+void PacketCapture::stop()
+{
+	if (handle != nullptr) 
+	{
+        	pcap_breakloop(handle);
+    	}
+}
+
+void PacketCapture::close()
+{
+	if (handle != nullptr)
+	{
+        	pcap_close(handle);
+        	handle = nullptr;
+    	}
+}

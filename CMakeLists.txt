@@ -16,6 +16,7 @@ add_executable(NetworkPacketInspection
     	src/main.cpp
 	src/services/PacketInspectionService.cpp
 	src/capture/PacketCapture.cpp
+	src/processing/PacketProcessingPool.cpp
 )
 
 target_include_directories(NetworkPacketInspection PRIVATE

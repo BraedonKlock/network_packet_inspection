@@ -21,8 +21,9 @@ class PacketCapture
 			: interfaceName(interfaceName), handle(nullptr), packetQueue(packetQueue) {}
 
     		bool open();
-
     		void start();
+		void stop();
+		void close();
 		
 		~PacketCapture()
 		{
