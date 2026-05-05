@@ -97,12 +97,15 @@ network_packet_inspection/
 │       └── PacketInspectionService.h
 ├── README.md
 ├── run.sh
-└── src
-    ├── capture
-    │   └── PacketCapture.cpp
-    ├── main.cpp
-    └── services
-        └── PacketInspectionService.cpp
+├── src
+│   ├── capture
+│   │   └── PacketCapture.cpp
+│   ├── main.cpp
+│   ├── processing
+│   │   └── PacketProcessingPool.cpp
+│   └── services
+│       └── PacketInspectionService.cpp
+└── test.sh
 ```
 
 ## How It Works
