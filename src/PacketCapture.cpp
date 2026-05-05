@@ -3,6 +3,11 @@
 void packetHandler(u_char* userData, const pcap_pkthdr* packetHeader, const u_char* packetData)
 {
 	std::cout << "Captured packet of length: " << packetHeader->len << " bytes\n";
+	
+	auto* packetQueue = reinterpret_cast<PacketQueue<RawPacket>*>(userData);
+	RawPacket packet;
+	packet.bytes.assign(packetData, packetData + packetHeader->len);
+	packetQueue->push(packet);
 }
 
 bool PacketCapture::open()
@@ -28,5 +33,5 @@ void PacketCapture::start()
 		return;
 	}
 
-	pcap_loop(handle, -1, packetHandler, nullptr);
+	pcap_loop(handle, -1, packetHandler, reinterpret_cast<u_char*>(&packetQueue));
 }

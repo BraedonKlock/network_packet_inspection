@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-PacketInspectionService::PacketInspectionService(const std::string& interfaceName) : capture(interfaceName)
+PacketInspectionService::PacketInspectionService(const std::string& interfaceName) 
+	: packetQueue(), capture(interfaceName, packetQueue)
 {
 }
 

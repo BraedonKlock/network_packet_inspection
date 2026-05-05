@@ -3,12 +3,14 @@
 
 #include "PacketCapture.h"
 #include "RawPacket.h"
+#include "PacketQueue.h"
 
 #include <string>
 
 class PacketInspectionService
 {
 	private:
+		PacketQueue<RawPacket> packetQueue;
 		PacketCapture capture;
 	public:
 		explicit PacketInspectionService(const std::string& interfaceName);

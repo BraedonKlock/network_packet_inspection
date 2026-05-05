@@ -1,6 +1,9 @@
 #ifndef PACKET_CAPTURE_H
 #define PACKET_CAPTURE_H
 
+#include "PacketQueue.h"
+#include "RawPacket.h"
+
 #include <pcap.h>
 #include <iostream>
 #include <string>
@@ -12,8 +15,10 @@ class PacketCapture
 	private:
 		std::string interfaceName;
 		pcap_t* handle;
+		PacketQueue<RawPacket>& packetQueue;
 	public:
-		PacketCapture(const std::string& interfaceName) : interfaceName(interfaceName), handle(nullptr) {}
+		PacketCapture(const std::string& interfaceName, PacketQueue<RawPacket>& packetQueue) 
+			: interfaceName(interfaceName), handle(nullptr), packetQueue(packetQueue) {}
 
     		bool open();
 
