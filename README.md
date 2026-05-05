@@ -75,16 +75,24 @@ network_packet_inspection/
 │
 ├── CMakeLists.txt
 ├── includes
-│   ├── PacketCapture.h
-│   ├── PacketInspectionService.h
-│   ├── PacketQueue.h
-│   └── RawPacket.h
+│   ├── capture
+│   │   └── PacketCapture.h
+│   ├── packets
+│   │   └── RawPacket.h
+│   ├── parsers
+│   ├── processing
+│   ├── queue
+│   │   └── PacketQueue.h
+│   └── services
+│       └── PacketInspectionService.h
 ├── README.md
 ├── run.sh
 └── src
+    ├── capture
+    │   └── PacketCapture.cpp
     ├── main.cpp
-    ├── PacketCapture.cpp
-    └── PacketInspectionService.cpp
+    └── services
+        └── PacketInspectionService.cpp
 ```
 
 ## How It Works

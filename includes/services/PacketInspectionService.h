@@ -1,9 +1,9 @@
 #ifndef PACKET_INSPECTION_SERVICE_H
 #define PACKET_INSPECTION_SERVICE_H
 
-#include "PacketCapture.h"
-#include "RawPacket.h"
-#include "PacketQueue.h"
+#include "capture/PacketCapture.h"
+#include "packets/RawPacket.h"
+#include "queue/PacketQueue.h"
 
 #include <string>
 

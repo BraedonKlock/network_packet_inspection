@@ -1,8 +1,8 @@
 #ifndef PACKET_CAPTURE_H
 #define PACKET_CAPTURE_H
 
-#include "PacketQueue.h"
-#include "RawPacket.h"
+#include "queue/PacketQueue.h"
+#include "packets/RawPacket.h"
 
 #include <pcap.h>
 #include <iostream>

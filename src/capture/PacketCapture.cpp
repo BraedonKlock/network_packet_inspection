@@ -1,4 +1,4 @@
-#include "PacketCapture.h"
+#include "capture/PacketCapture.h"
 
 void packetHandler(u_char* userData, const pcap_pkthdr* packetHeader, const u_char* packetData)
 {
