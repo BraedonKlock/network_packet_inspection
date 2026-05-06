@@ -1,13 +1,11 @@
 #include "processing/PacketProcessingPool.h"
 
-PacketProcessingPool::PacketProcessingPool(PacketQueue<RawPacket>& packetQueue) : packetQueue(packetQueue), running (false)
+PacketProcessingPool::PacketProcessingPool(PacketQueue<RawPacket>& packetQueue) : packetQueue(packetQueue) 
 {
 }
 
 void PacketProcessingPool::start(std::size_t threadCount)
 {
-	running = true;
-	
 	std::cout << "Processing pool started" << std::endl;
 
 	for (std::size_t i = 0; i < threadCount; ++i)

@@ -12,7 +12,6 @@ class PacketProcessingPool
 	private:
 		std::vector<std::thread> workers;
 		PacketQueue<RawPacket>& packetQueue;
-		bool running = false;
 
 		void workerLoop();
 	public:
